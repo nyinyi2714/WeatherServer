@@ -23,7 +23,11 @@ public partial class CountriesSourceContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
     {
-        IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsetting.json");
+        if(optionsBuilder.IsConfigured)
+        {
+            return;
+        }
+        IConfigurationBuilder builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
         var config = builder.Build();
         optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
     }
