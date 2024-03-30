@@ -3,6 +3,7 @@ using CountryModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CountryModel.Migrations
 {
     [DbContext(typeof(CountriesSourceContext))]
-    partial class CountriesSourceContextModelSnapshot : ModelSnapshot
+    [Migration("20240330013657_stringLength")]
+    partial class stringLength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,8 +79,9 @@ namespace CountryModel.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(20)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(max)");
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("CountryId")
                         .HasName("PK__Country__10D1609FF08F24B8");

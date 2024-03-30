@@ -32,7 +32,7 @@ namespace WeatherServer.Controllers
                 HeaderValidated = null
             };
             int cityCount = 0;
-            using (StreamReader reader = new(_pathName))
+            using (StreamReader reader = new("C:\\Users\\nmh13452\\Downloads\\worldcities.csv"))
             using (CsvReader csv = new(reader, config))
             {
                 IEnumerable<WorldCitiesCsv>? records = csv.GetRecords<WorldCitiesCsv>();
@@ -79,7 +79,7 @@ namespace WeatherServer.Controllers
                 HeaderValidated = null
             };
 
-            using StreamReader reader = new(_pathName);
+            using StreamReader reader = new("C:\\Users\\nmh13452\\Downloads\\worldcities.csv");
             using CsvReader csv = new(reader, config);
 
             List<WorldCitiesCsv> records = csv.GetRecords<WorldCitiesCsv>().ToList();

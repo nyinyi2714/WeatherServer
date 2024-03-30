@@ -38,7 +38,7 @@ namespace WeatherServer.Controllers
             return await x.ToListAsync();
         }
 
-        // GET: api/Cities/get-population
+        // GET: api/Cities/get-population2
         [HttpGet("get-population2")]
         public async Task<ActionResult<IEnumerable<CountryPopulation>>> GetPopulation2()
         {
