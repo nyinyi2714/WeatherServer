@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using CountryModel;
 using WeatherServer.DTO;
 using Microsoft.Identity.Client;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WeatherServer.Controllers
 {
@@ -24,6 +25,7 @@ namespace WeatherServer.Controllers
         }
 
         // GET: api/Cities/get-population
+        [Authorize]
         [HttpGet("get-population")]
         public async Task<ActionResult<IEnumerable<CountryPopulation>>> GetPopulation()
         {
