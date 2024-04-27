@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CountryModel;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WeatherServer.Controllers
 {
@@ -36,6 +37,7 @@ namespace WeatherServer.Controllers
         }
 
         [HttpGet("countryCities/{id}")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<City>>> GetCitiesByCountry(int id)
         {
             return await context.Cities.Where(c => c.CountryId == id).ToListAsync();
